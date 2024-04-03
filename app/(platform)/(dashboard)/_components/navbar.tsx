@@ -34,7 +34,7 @@ export function Navbar() {
               Create
             </Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="w-[500px]">
             <DialogHeader>
               <DialogTitle> Create A Event </DialogTitle>
             </DialogHeader>

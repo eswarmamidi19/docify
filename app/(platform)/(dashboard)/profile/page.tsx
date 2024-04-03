@@ -26,7 +26,7 @@ export default async function ProfilePage() {
     <div className="w-full mt-16 p-7">
        
        <h1 className={cn(font.className , "text-5xl")}> Welcome {user?.username} </h1>
-
+       <p className=""> Visit Your Forms </p>
       {dbUser?.eventforms.length === 0 ? (
         <h1>No Events Available</h1>
       ) : (

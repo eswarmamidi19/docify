@@ -3,6 +3,6 @@
 import { redirect } from 'next/navigation'
 
 export async function RedirectToFormPage(eventId : string){
-         const link = "/" +eventId 
+         const link = "/" +eventId +'/circular';
          redirect(link);
 }

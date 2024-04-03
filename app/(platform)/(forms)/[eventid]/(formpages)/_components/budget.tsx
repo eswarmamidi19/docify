@@ -42,7 +42,14 @@ export function Budget() {
   }, [context?.eventId]);
 
   let currentDate = `${day}-${month}-${year}`;
-
+  function getTotal(){
+        let sum =0;
+        for(let b of context?.budgetData!){
+              sum+=b.amount;
+        }
+        return sum
+  }
+  
   return (
     <div className="flex h-full items-center justify-center p-6 " id="budget">
       {/* A4 Preview */}
@@ -76,8 +83,8 @@ export function Budget() {
                   {context?.subject} “
                 </p>
                 <p className="text-center">
-                  Name of the Programme: “ {formData?.startDate} to{" "}
-                  {formData?.endDate} on “ number of registed people : TODO “
+                  Dates of Programme : “ {formData?.startDate} to{" "}
+                  {formData?.endDate} on “ number of registed people : {context?.attendees}  “
                 </p>
 
                 <div className="overflow-x-auto">
@@ -97,9 +104,15 @@ export function Budget() {
                                 <td className="px-4 py-2 border bg-white">{budget.amount}</td>
                             </tr>
                           })}
+                          <tr>
+                          <td className="px-4 py-2 border bg-white" ></td>
+                                <td className="px-4 py-2 border bg-white">Total</td>
+                                <td className="px-4 py-2 border bg-white">{getTotal()}</td>
+                          </tr>
                     </tbody>
                   </table>
                 </div>
+                <div className="w-full text-end p-3 mt-72 font-bold"> Signature of co ordinator </div>
               </div>
             </div>
           </div>

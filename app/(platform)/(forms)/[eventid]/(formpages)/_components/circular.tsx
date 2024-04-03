@@ -87,7 +87,9 @@ export function Circular() {
                   event coordinator {context?.coordinator === "" ? "coordinator" : context?.coordinator } , Associate Professor,
                   Department of {formData?.departmentName}.
                 </p>
+
               </div>
+              <div className="w-full text-end p-3 mt-72 font-bold"> Signature of co ordinator </div>
             </div>
           </div>
         </div>

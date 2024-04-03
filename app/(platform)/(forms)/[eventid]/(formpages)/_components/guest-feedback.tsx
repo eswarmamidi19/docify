@@ -121,6 +121,7 @@ export default function GuestFeedBack(){
                    </tbody>
                  </table>
                </div>
+               <div className="w-full text-end p-3 mt-72 font-bold"> Signature of co ordinator </div>
              </div>
            </div>
          </div>

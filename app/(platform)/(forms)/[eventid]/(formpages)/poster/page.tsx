@@ -13,10 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "../../_context/form-context-hook";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 const customFont = localFont({
   src: "../../../../../../public/fonts/font.woff2",
 });
@@ -33,21 +31,6 @@ interface FileState {
 
 export default function certificatePage() {
   
-  const handleDownload = (e : FormEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('cert')!;
-
-    html2canvas(element).then(canvas => {
-      const imgData = canvas.toDataURL('image/jpeg');
-      const pdf = new jsPDF('l', 'mm', 'a4');
-      const imgWidth = pdf.internal.pageSize.getWidth();
-     //const imgHeight = (canvas.height * imgWidth) / canvas.width;
-     const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      pdf.addImage(imgData, 'JPEG', 0, pdf.internal.pageSize.getHeight()*0.15, imgWidth, imgHeight);
-      pdf.save('circular.pdf');
-    });
-  };
-
   const context = useForm();
 
   const [formData, setFormData] = useState<{
@@ -78,7 +61,7 @@ export default function certificatePage() {
   }, [context?.eventId]);
 
   const [name, setName] = useState("");
-  
+  const [course, setCourse] = useState();
   const [coordinator , setCoordinator] = useState<FileState>();
   const [coconvenor , setCoconvenor] = useState<FileState>();
   const [convenor , setConvenor]  = useState<FileState>();
@@ -155,7 +138,7 @@ export default function certificatePage() {
     <div className="w-100 h-screen  flex flex-col gap-y-2">
       {/* Heading */}
       <div className={cn(customFont.className, "text-2xl md:text-4xl")}>
-        Certificate Page
+        Poster Page
       </div>
 
       <div className="h-full">
@@ -212,10 +195,10 @@ export default function certificatePage() {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle asChild><Button className="w-fit h-fit" onClick={handleDownload}> Generate Certificate </Button></DialogTitle>
-              <DialogDescription className="w-fit h-fit">
-                <div className="h-full w-full border-[20px] border-yellow-500 flex flex-col py-2 items-center" id="cert">
-                  <div className="flex flex-col items-center gap-3">
+              <DialogTitle>Certificate</DialogTitle>
+              <DialogDescription>
+                <div className="h-[98%] w-[95%] border-[20px] border-yellow-500 flex flex-col py-2 items-center">
+                  <div className="flex gap-3">
                     <div>
                       <img
                         src="\aditya-logo.jpg"
@@ -226,8 +209,8 @@ export default function certificatePage() {
                     </div>
                     <div>
                       <h1
-                        className= {cn("text-center text-2xl font-bold text-red-600 tracking-wider" , customFont.className)}
-                  
+                        className="text-center text-2xl font-bold text-red-600 font-sans"
+                        style={{ fontFamily: "Arial" }}
                       >
                         ADITYA ENGINEERING COLLEGE
                       </h1>
@@ -251,23 +234,18 @@ export default function certificatePage() {
                       >
                         Department of Computer Science & Engineering
                       </h1>
-                      
-                    </div>
-
-                    <div>
-                    <h1
-                        className = {cn("text-center text-2xl font-bold text-blue-800 tracking-widest " , customFont.className)}
-                        
+                      <h1
+                        className="text-center text-2xl font-bold text-blue-800 font-sans"
+                        style={{ fontFamily: "Consolas" }}
                       >
                         Certificate of Participation
-                      </h1>      
+                      </h1>
                     </div>
-
                   </div>
-                  <div className="w-[80%] h-[80%] py-2 px-5 flex justify-center items-center">
+                  <div className="w-[95%] py-2 px-5 flex justify-center items-center">
                     <div>
-                    <p className='leading-relaxed text-xl'>This is to certify&nbsp; <span className=' border-dotted border-b-2 font-bold'>{ name }</span> &nbsp; from &nbsp;  
-                &nbsp; has participated in a <span className='font-bold mx-2'>{ "  " + formData?.title + "  "}  { " " } </span>Development programme on <span className='border-dotted border-b-2 font-bold'>{context?.subject}</span> 
+                    <p className='leading-relaxed'>This is to certify&nbsp; <span className=' border-dotted border-b-2 font-bold'>{ name }</span> &nbsp; from &nbsp; <span className='border-dotted border-b-2 font-bold'>{ course }</span> 
+                &nbsp; has participated in a <span className='font-bold'>Five Day</span>Development programme on <span className='border-dotted border-b-2 font-bold'>{context?.subject}</span> 
                 &nbsp;   organized by deparment of <span className='font-bold'>Computer Science and Engineering</span>, <b>Aditya Engineering College(A)</b> &nbsp; in association with <span className='font-bold'>Supraja Technologies</span>
                 <span> conducted from {formData?.startDate}-{formData?.endDate}</span>
                 </p>

@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 import { useForm } from "../../_context/form-context-hook";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { Label } from "@/components/ui/label";
 
 export function BudgetForm() {
 
@@ -72,6 +73,9 @@ export function BudgetForm() {
   return (
     <div className="w-full max-w-md mx-auto">
       <form className="rounded px-8 pt-6 pb-8 mb-4">
+         <div className="my-5">
+         <Label>Enter Number of Attendees</Label> <Input type="number" onChange={ (e)=>context?.setAttendees(e.target.value) } />
+         </div>
         {context?.budgetData.map((budget) => (
           <div key={budget.id} className="mb-4 flex items-center gap-3">
             <Input

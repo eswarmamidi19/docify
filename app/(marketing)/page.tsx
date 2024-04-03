@@ -11,7 +11,7 @@ const HeadinFont = localFont({
 
 const textFont = Poppins({
   subsets: ["latin"],
-  weight: ["100","200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export default function RootPage() {
@@ -46,16 +46,15 @@ export default function RootPage() {
           "text-sm md:text-xl mt-4 text-center max-w-xs md:max-w-2xl"
         )}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        consequatur blanditiis fugiat cumque. Facere explicabo repellendus qui
-        quaerat ullam 
+        Streamline your event reporting process with our intuitive and
+        comprehensive tool. From conferences to workshops, galas to seminars,
+        we've got you covered. 
       </div>
-      
-      {/* Sign Up Button */}
-      <Button className="mt-6" size={"lg" } asChild>
-           <Link href={"/sign-up"}>Get Docify for free </Link>
-      </Button>
 
+      {/* Sign Up Button */}
+      <Button className="mt-6" size={"lg"} asChild>
+        <Link href={"/sign-up"}>Get Docify for free </Link>
+      </Button>
     </div>
   );
 }

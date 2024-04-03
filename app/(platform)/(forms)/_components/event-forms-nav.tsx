@@ -30,6 +30,18 @@ export function EventFormNav({eventId} : EventFormNavProps){
             {
                   link : "/" +eventId+ "/certificate",
                   name : "certificate"
+            },
+            {
+                  link : "/" + eventId + "/poster",
+                  name : "poster"
+            },
+            {
+               link : "/" + eventId+ "/formindex",
+               name : "fdpindex"
+            },
+            {
+                  link : "/" +eventId + "/timetable",
+                  name : "timetable"
             }
       ];
       
